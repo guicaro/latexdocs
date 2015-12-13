@@ -1,0 +1,193 @@
+\documentclass[11pt]{article}
+\usepackage{acl2005}
+\usepackage{examples}
+\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{latexsym}
+
+\bibliographystyle{plainnat}
+
+\newcommand{\nncite}{\citep}
+\newcommand{\namecite}{\cite}
+
+\bibpunct{(}{)}{,}{a}{,}{,}
+
+\newcommand{\hidden}[1]{}
+\newcommand{\eref}[2][]{(\ref{#2}#1)}
+
+\title{Your Project Title}
+
+\author{}
+
+\author{First Last\\
+Department of Linguistics\\
+University of Texas at Austin\\
+1 University Station B5100\\
+Austin, TX 78712-0198 USA\\
+{\tt youremail@mail.utexas.edu}}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  Put your abstract here.
+\end{abstract}
+
+
+\section{Introduction}
+
+Introduce your topic and motivate what you are doing with it.
+
+Make reference to previous work with bibtex commands. For example, you
+might say something about Segmented Discourse Representation Theory
+\citep{asher:lascarides:2003}. You might also want to put the
+reference in your text like saying that \cite{collins:2003}
+discusses probabilistic head-driven parsing models for the Penn
+Treebank.
+
+Look in the file \verb+mybib.bib+ for a bunch of entries, and add your
+own as you need them. To get the citations to show up in the paper, do:
+
+\begin{verbatim}
+> latex proposal
+> bibtex proposal
+> latex proposal
+> latex proposal
+\end{verbatim}
+
+Then you can view the dvi file by doing:
+
+\begin{verbatim}
+> xdvi proposal&
+\end{verbatim}
+
+Convert it into a postscript file and then view it by doing:
+
+\begin{verbatim}
+> dvips proposal -o
+> gv proposal&
+\end{verbatim}
+
+Also, you can use \verb+kghostview+ instead of \verb+gv+.
+
+In what follows, I give some suggested section headings and some
+useful things you might use.\footnote{For example, here is a
+footnote.}
+
+
+\section{Data/Problem}
+
+Give details about the data or problem you are addressing. If you need
+to give examples, you can using the examples style, which is already
+included by this file. For example, here is an example:
+
+\begin{examples}
+\item   \label{ex:example of an example}
+  \begin{subexamples}
+  \item \label{ex:subpart}  The first part of this example.
+  \item   The other part.
+  \end{subexamples}
+\end{examples}
+
+You can refer to the example, which has the label
+\verb+ex:example of an example+, by using the \verb+\ref+ command. The
+number referring to this example is \ref{ex:example of an
+example}. I've also added the command \verb+\eref+, which puts
+parentheses around the example number, like this: \eref{ex:example of
+an example}. You can also sneak an option subpart label in there like
+this: \eref[a]{ex:example of an example}.
+
+
+\section{Approach}
+
+You might want to use some math in your paper. Here is an example:
+
+\[ 
+p(y_j|x) = \frac{exp(\sum_{i=1}^n \lambda_i f_i(x,y_j))}{\sum_y exp(\sum_{i=1}^n \lambda_i f_i(x,y))}   
+\]
+
+Here's a useful math environment that allows you to line up multiple lines:
+
+\begin{eqnarray*}
+  H & = & -p(b)\times log~p(b) - p(c)\times log~p(c) - p(f)\times log~p(f)\\
+  & = & -p(b) \times log~p(b) \\
+  &   & - (-2p(b)+1.25) \times log~(-2p(b)+1.25)\\
+  &   & - (p(b)-.25)\times log~(p(b)-.25)\\
+\end{eqnarray*}
+
+Of course that didn't fit in the column. We can spread it across two
+columns by making it a figure. See Figure \ref{fig:aligned math
+example}.\footnote{Note that you can label the figure as well, and
+refer to it.}
+
+\begin{figure*}
+\begin{eqnarray*}
+  H & = & -p(b)\times log~p(b) - p(c)\times log~p(c) - p(f)\times log~p(f)\\
+  & = & -p(b) \times log~p(b) \\
+  &   & - (-2p(b)+1.25) \times log~(-2p(b)+1.25)\\
+  &   & - (p(b)-.25)\times log~(p(b)-.25)
+\end{eqnarray*}
+\caption{Here is my calculation across two columns.}
+\label{fig:aligned math example}
+\end{figure*}
+
+\section{Results}
+
+Describe the outcome of your project. What did you accomplish? Do you
+have performance figures?
+
+Here's an example table:
+
+\begin{center}
+\begin{tabular}{l|rr|rr}
+& \multicolumn{2}{c|}{Precsion} & \multicolumn{2}{c}{Recall}\\
+Model    & Lab.   &  Unlab. &  Lab.   &  Unlab.   \\ \hline
+Baseline & 50.7   &  61.8   &  43.4   &  53.3     \\
+Model 1  & 68.7   &  75.2   &  82.1   &  90.0     \\
+Model 2  & 88.1   &  92.1   &  81.0   &  87.3     
+\end{tabular}
+\end{center}
+
+You might prefer it as a figure, like Figure \ref{fig:model perf}.
+
+\begin{figure}
+\begin{center}
+\begin{tabular}{l|rr|rr}
+& \multicolumn{2}{c|}{Precsion} & \multicolumn{2}{c}{Recall}\\
+Model    & Lab.   &  Unlab. &  Lab.   &  Unlab.   \\ \hline
+Baseline & 50.7   &  61.8   &  43.4   &  53.3     \\
+Model 1  & 68.7   &  75.2   &  82.1   &  90.0     \\
+Model 2  & 88.1   &  92.1   &  81.0   &  87.3     
+\end{tabular}
+\end{center}
+\caption{Model performance.}
+\label{fig:model perf}
+\end{figure}
+
+
+
+\section{Previous Work}
+
+Talk about those that came before you, and try to point out what
+differentiates you from them.
+
+
+\section{Conclusion}
+
+Give you concluding thoughts stressing what a great result you have
+and maybe give just a {\it few} words on future directions.
+
+
+
+\section*{Acknowledgments} 
+Mention here if you'd like to thank anybody.
+
+\begin{small}
+\bibliography{mybib.bib}
+\end{small}
+
+\end{document}
